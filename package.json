@@ -1,0 +1,15 @@
+{
+  "name": "task-express-m1-intro-crud-banks",
+  "version": "1.0.0",
+  "description": "In this task, you will create a banking API with the basic `CRUD` operations.",
+  "main": "accounts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
