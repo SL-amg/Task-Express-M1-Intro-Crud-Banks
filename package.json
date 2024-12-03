@@ -2,8 +2,9 @@
   "name": "task-express-m1-intro-crud-banks",
   "version": "1.0.0",
   "description": "In this task, you will create a banking API with the basic `CRUD` operations.",
-  "main": "accounts.js",
+  "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

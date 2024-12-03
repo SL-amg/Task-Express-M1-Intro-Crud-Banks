@@ -1,0 +1,49 @@
+// ONLy when Forking a value
+
+// make file called .gitignore
+// inside it add node_modules
+// then git add .
+// check git status, it should not show node files
+
+///- to start the task
+// make app.js file
+// add the following:
+// const express = require("express");
+// const app = express();
+// const port = 8000;
+// and add the following at the buttom
+// app.listen(port, () => {
+//     console.log(`this is my first BackEnd Server and it is online at ${port}`);
+//   });
+
+// in package.json we modify the main file
+// "main": "app.js",
+// and add    "start": "nodemon app.js",
+
+// to start the task:
+//A
+// 🥽 The method you will use is to `GET`
+
+// 1. Create a route to `/accounts`.
+// 2. In the response, send the `accounts` data, using the `json` method because we need to convert it to `json`.
+// 3. We also need to send a status code using `.status` method, Which code represents a successful response?
+// </aside>
+
+//B
+{/* 🛠 The method you will use is `POST`
+
+1. You will need to create a route to `/accounts`.
+2. Generate an `id` for our new account.
+3. Create a variable `newAccount` to store our new account, pass it the data coming from `req.body`, the `id` we just created and a funds of 0 since it's the default
+4. Push your `newAccount` into the `accounts` array.
+5. Return the `newAccount` in the response with the correct status code.
+*/}
+
+//C
+// The method you will use is `DELETE`
+
+// 1. Create a route to `/accounts` that accepts a param `accountId`.
+// 2. Extract this `param` using `req.params`.
+// 3. Find the account with the same `id`, if it doesn't exist, return a response with `404` status code and `not found` message.
+// 4. If it does exist, filter your `accounts` array to not incldue this deleted account.
+// 5. Send a response with the correct status code.
