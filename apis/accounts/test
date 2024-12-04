@@ -1,9 +1,12 @@
+const express = require("express");
+const router = express.Router();
+
 const accounts = require("../../accounts");
 
 // Fetch Get
-exports.listAccounts = (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).json(accounts);
-};
+});
 
 // Post
 const creatNewAccount = (newAccountData) => {
@@ -13,10 +16,10 @@ const creatNewAccount = (newAccountData) => {
   console.log("My new book is: ", newAccount);
   return newAccount;
 };
-exports.creatAccount = (req, res) => {
+router.post("/", (req, res) => {
   const newAccount = creatNewAccount(req.body);
   res.status(201).json(newAccount);
-};
+});
 
 // delete
 const deleteAccount = (accountIdToBeDeleted) => {
@@ -25,7 +28,7 @@ const deleteAccount = (accountIdToBeDeleted) => {
   );
   return newModifiedAccountsList;
 };
-exports.deleteAccountController = (req, res) => {
+router.delete("/:accountId", (req, res) => {
   const { accountId } = req.params;
   const account = accounts.find((account) => account.id == accountId);
   if (account) {
@@ -35,14 +38,14 @@ exports.deleteAccountController = (req, res) => {
   } else {
     res.status(404).json("not found");
   }
-};
+});
 
 //put
 const updateAccount = (currentAccount, newAccountData) => {
   const theUpdatedAccountList = Object.assign(currentAccount, newAccountData);
   return theUpdatedAccountList;
 };
-exports.updateAccountController = (req, res) => {
+router.put("/:accountId", (req, res) => {
   const { accountId } = req.params;
   const account = accounts.find((account) => account.id == accountId);
   if (account) {
@@ -51,10 +54,10 @@ exports.updateAccountController = (req, res) => {
   } else {
     res.status(404).json("not found");
   }
-};
+});
 
 //single user
-exports.accountDetail = (req, res) => {
+router.get("/:userName", (req, res) => {
   const { userName } = req.params;
   const name = accounts.find(
     (name) => name.username.toLowerCase() === userName.toLowerCase()
@@ -65,10 +68,11 @@ exports.accountDetail = (req, res) => {
   } else {
     res.status(404).json(); // if we used http://localhost:8000/books/4 it will show 404 error
   }
-};
+});
 
 //Query Parameters
-exports.accountQuery = (req, res) => {
+
+router.get("/", (req, res) => {
   const nameQuery = req.query.name.toLowerCase();
   const age = req.query.age;
   if (nameQuery) {
@@ -76,4 +80,6 @@ exports.accountQuery = (req, res) => {
   } else {
     res.status(404).json();
   }
-};
+});
+
+module.exports = router;
