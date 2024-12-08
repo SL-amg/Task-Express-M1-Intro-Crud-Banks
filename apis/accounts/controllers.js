@@ -20,6 +20,9 @@ const creatNewAccount = async (newAccountData) => {
 };
 exports.creatAccount = (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`; //updated file to upload image
+    }
     const newAccount = creatNewAccount(req.body);
     res.status(201).json(newAccount);
   } catch (e) {
@@ -56,6 +59,9 @@ exports.deleteAccountController = async (req, res) => {
 
 exports.updateAccountController = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = `http://${req.get("host")}/media/${req.file.filename}`; //updated file to upload image
+    }
     const { accountId } = req.params;
     const foundAccount = await Account.findById(accountId);
     if (foundAccount) {
